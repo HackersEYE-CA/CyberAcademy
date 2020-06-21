@@ -7,4 +7,4 @@ startxfce4 &
 [ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
 [ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
 xsetroot -solid grey
-vncconfig -iconic &' >> ~/.vnc/xstartup
+vncconfig -iconic &' > ~/.vnc/xstartup
