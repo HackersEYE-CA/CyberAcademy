@@ -8,4 +8,5 @@ startxfce4 &
 [ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
 xsetroot -solid grey
 vncconfig -iconic &' > ~/.vnc/xstartup
+systemctl daemon-reload
 service vncboot restart
