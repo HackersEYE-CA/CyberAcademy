@@ -9,4 +9,5 @@ startxfce4 &
 xsetroot -solid grey
 vncconfig -iconic &' > ~/.vnc/xstartup
 systemctl daemon-reload
-service vncboot restart
+service vncboot stop
+service vncboot start
