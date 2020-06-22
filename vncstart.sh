@@ -1,2 +1,2 @@
 #!/bin/bash
-vncserver :1
+sudo vncserver :1
