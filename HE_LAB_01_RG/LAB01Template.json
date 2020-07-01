@@ -103,7 +103,6 @@
                         "caching": "ReadWrite",
                         "managedDisk": {
                             "storageAccountType": "StandardSSD_LRS",
-                            "id": "[resourceId('Microsoft.Compute/disks', concat(parameters('virtualMachines_OVPN_name'), '_disk1_5332c56df3554914978afeeca827a7a3'))]"
                         },
                         "diskSizeGB": 30
                     },
