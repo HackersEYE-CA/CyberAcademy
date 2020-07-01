@@ -103,8 +103,7 @@
                         "caching": "ReadWrite",
                         "managedDisk": {
                             "storageAccountType": "StandardSSD_LRS"
-                            
-                        },
+                    },
                         "diskSizeGB": 30
                     },
                     "dataDisks": []
