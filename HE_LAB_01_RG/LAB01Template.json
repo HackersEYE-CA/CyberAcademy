@@ -128,9 +128,6 @@
         },
         "commandToExecute": "curl https://raw.githubusercontent.com/HackersEYE-CA/azure-quickstart-templates/master/openvpn-access-server-ubuntu/changeip.sh | bash"
       }
-      
-        
-      
     },
     {
       "type": "Microsoft.Network/virtualNetworks/subnets",
