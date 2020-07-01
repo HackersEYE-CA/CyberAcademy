@@ -111,6 +111,7 @@
                 "osProfile": {
                     "computerName": "[parameters('virtualMachines_OVPN_name')]",
                     "adminUsername": "headmin",
+                    "adminPassword": "1234567890",
                     "linuxConfiguration": {
                         "disablePasswordAuthentication": false,
                         "provisionVMAgent": true
