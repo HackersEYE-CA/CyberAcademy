@@ -125,9 +125,6 @@
               "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_OVPNVMNic_name'))]"
             }
           ]
-        },
-        "settings": {
-          "commandToExecute": "curl https://raw.githubusercontent.com/HackersEYE-CA/azure-quickstart-templates/master/openvpn-access-server-ubuntu/changeip.sh | bash"
         }
       }
     },
