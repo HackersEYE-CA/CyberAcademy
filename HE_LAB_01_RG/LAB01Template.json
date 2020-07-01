@@ -104,7 +104,7 @@
             "managedDisk": {
               "storageAccountType": "StandardSSD_LRS"
             },
-            "diskSizeGB": 10
+            "diskSizeGB": 30
           },
           "dataDisks": []
         },
