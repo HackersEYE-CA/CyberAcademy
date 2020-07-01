@@ -209,7 +209,7 @@
         }
       },
       "dependsOn": [
-        "[concat('Microsoft.Compute/virtualMachines/', parameters('virtualMachineName'))]"
+        "[concat('Microsoft.Compute/virtualMachines/', parameters('virtualMachines_OVPN_name'))]"
       ]
     }
   ]
