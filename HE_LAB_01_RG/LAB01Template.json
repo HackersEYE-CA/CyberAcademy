@@ -438,7 +438,7 @@
       ]
     },
     {
-      "name": "microsoft.custom-script-linux-20200701124045",
+      "name": "microsoft.custom-script-linux-20200701124046",
       "apiVersion": "2015-01-01",
       "type": "Microsoft.Resources/deployments",
       "properties": {
