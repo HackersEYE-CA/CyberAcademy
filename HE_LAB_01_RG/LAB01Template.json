@@ -181,6 +181,36 @@
           "id": "[parameters('networkSecurityGroups_OpenVPNNetworkSecurityGroup_externalid')]"
         }
       }
+    },
+    {
+      "name": "microsoft.custom-script-linux-20200701124045",
+      "apiVersion": "2015-01-01",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "incremental",
+        "templateLink": {
+          "uri": "https://gallery.azure.com/artifact/20161101/microsoft.custom-script-linux-arm.2.0.56/Artifacts/MainTemplate.json"
+        },
+        "parameters": {
+          "vmName": {
+            "value": "CahngeIP"
+          },
+          "location": {
+            "value": "germanywestcentral"
+          },
+          "fileUris": {
+            "value": [
+              "https://hemainstorage.blob.core.windows.net/scripts/ovpn_change_ip.sh?sp=r&se=2020-07-01T17:40:17Z&sv=2019-10-10&sr=b&sig=wserzV70wpaYTuNKHM4G3fYf0GM3X1%2FRQAQ0uRteMJI%3D"
+            ]
+          },
+          "commandToExecute": {
+            "value": "sh ovpn_change_ip.sh"
+          }
+        }
+      },
+      "dependsOn": [
+        "[concat('Microsoft.Compute/virtualMachines/', parameters('virtualMachineName'))]"
+      ]
     }
   ]
 }
