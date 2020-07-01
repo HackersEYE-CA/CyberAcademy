@@ -438,7 +438,7 @@
       ]
     },
     {
-      "name": "microsoft.custom-script-linux-20200701124046",
+      "name": "microsoft.custom-script-linux-20200701162020",
       "apiVersion": "2015-01-01",
       "type": "Microsoft.Resources/deployments",
       "properties": {
@@ -455,7 +455,7 @@
           },
           "fileUris": {
             "value": [
-              "https://hemainstorage.blob.core.windows.net/scripts/vnc_start.sh?sp=r&se=2020-07-01T21:12:18Z&sv=2019-10-10&sr=b&sig=oeDA6E1sD7C0FA7TlZ5W2J9AY%2FcCcR0iP129HsQXHCQ%3D"
+              "https://hemainstorage.blob.core.windows.net/scripts/vnc_start.sh?sp=r&se=2020-07-01T21:20:07Z&sv=2019-10-10&sr=b&sig=JadVTJb5n6svkj%2FSKYKc1hD0t9h3XCegO4vwKCoZh%2FU%3D"
             ]
           },
           "commandToExecute": {
