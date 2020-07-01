@@ -190,7 +190,7 @@
         },
         "parameters": {
           "vmName": {
-            "value": "CahngeIP"
+            "value": "OVPN"
           },
           "location": {
             "value": "germanywestcentral"
