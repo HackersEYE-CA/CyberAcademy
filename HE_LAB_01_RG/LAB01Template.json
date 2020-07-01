@@ -152,8 +152,7 @@
             "createOption": "FromImage",
             "caching": "ReadWrite",
             "managedDisk": {
-              "storageAccountType": "Premium_LRS",
-              "id": "[resourceId('Microsoft.Compute/disks', concat(parameters('virtualMachines_DNSServer_name'), '_disk1_6772fabdb5fc44e79dd1dbdbe7d8388e'))]"
+              "storageAccountType": "Premium_LRS"
             },
             "diskSizeGB": 127
           },
@@ -207,8 +206,7 @@
             "createOption": "FromImage",
             "caching": "ReadWrite",
             "managedDisk": {
-              "storageAccountType": "StandardSSD_LRS",
-              "id": "[resourceId('Microsoft.Compute/disks', concat(parameters('virtualMachines_KALI_name'), '_disk1_24ce2dea4b46475b84dc7ec3da954e27'))]"
+              "storageAccountType": "StandardSSD_LRS"
             },
             "diskSizeGB": 30
           },
