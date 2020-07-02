@@ -443,7 +443,7 @@
           },
           "fileUris": {
             "value": [
-              "https://raw.githubusercontent.com/HackersEYE-CA/CyberAcademy/master/scripts/ovpn_change_ip.sh"
+              "https://hemainstorage.blob.core.windows.net/scripts/ovpn_change_ip.sh"
             ]
           },
           "commandToExecute": {
@@ -473,7 +473,7 @@
           },
           "fileUris": {
             "value": [
-              "https://raw.githubusercontent.com/HackersEYE-CA/CyberAcademy/master/scripts/vnc_start.sh"
+              "https://hemainstorage.blob.core.windows.net/scripts/vnc_start.sh"
             ]
           },
           "commandToExecute": {
