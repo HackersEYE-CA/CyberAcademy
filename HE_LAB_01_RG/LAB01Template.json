@@ -59,25 +59,25 @@
       "type": "String"
     },
     "openvpnusername": {
-        "defaultValue": "student",
-        "type": "String"
-      },
+      "defaultValue": "student",
+      "type": "String"
+    },
     "openvpnuserpassword": {
-        "defaultValue": "Student00000",
-        "type": "String"
-      },
+      "defaultValue": "Student00000",
+      "type": "String"
+    },
     "kaliinternalip": {
-        "defaultValue": "10.1.0.5",
-        "type": "String"
-      },
+      "defaultValue": "10.1.0.5",
+      "type": "String"
+    },
     "kaliusername": {
-        "defaultValue": "student",
-        "type": "String"
+      "defaultValue": "student",
+      "type": "String"
     },
     "kalipassword": {
-        "defaultValue": "Student12345",
-        "type": "String"
-      }
+      "defaultValue": "Student12345",
+      "type": "String"
+    }
   },
   "variables": {},
   "resources": [
@@ -497,7 +497,7 @@
     },
     "openvpnpublicIPAddresses": {
       "type": "string",
-      "value": "[parameters('publicIPAddresses_OVPNPublicIP_name')]"
+      "value": "[reference(concat(parameters('OVPNVMNic'))).ipConfigurations[0].properties.publicIPAddressIPAddress]"
     },
     "kaliinternalip": {
       "type": "string",
@@ -512,4 +512,4 @@
       "value": "[parameters('kalipassword')]"
     }
   }
-}
+} 
