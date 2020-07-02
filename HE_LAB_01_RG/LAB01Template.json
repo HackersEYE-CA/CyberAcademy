@@ -58,36 +58,26 @@
       "defaultValue": "/subscriptions/dfc56fc5-6696-4c3c-ac3c-fce7c1c4fe46/resourceGroups/HE_IMAGES_RG/providers/Microsoft.Network/networkSecurityGroups/OpenVPNNetworkSecurityGroup",
       "type": "String"
     },
-    {
-      "openvpnusername": {
+    "openvpnusername": {
         "defaultValue": "student",
         "type": "String"
-      }
-    },
-    {
-      "openvpnuserpassword": {
+      },
+    "openvpnuserpassword": {
         "defaultValue": "Student00000",
         "type": "String"
-      }
-    },
-    {
-      "kaliinternalip": {
+      },
+    "kaliinternalip": {
         "defaultValue": "10.1.0.5",
         "type": "String"
-      }
-    },
-    {
-      "kaliusername": {
+      },
+    "kaliusername": {
         "defaultValue": "student",
         "type": "String"
-      }
     },
-    {
-      "kalipassword": {
+    "kalipassword": {
         "defaultValue": "Student12345",
         "type": "String"
       }
-    }
   },
   "variables": {},
   "resources": [
