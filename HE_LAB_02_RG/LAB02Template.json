@@ -57,11 +57,31 @@
     "networkSecurityGroups_OpenVPNNetworkSecurityGroup_externalid": {
       "defaultValue": "/subscriptions/dfc56fc5-6696-4c3c-ac3c-fce7c1c4fe46/resourceGroups/HE_IMAGES_RG/providers/Microsoft.Network/networkSecurityGroups/OpenVPNNetworkSecurityGroup",
       "type": "String"
+    },
+    "openvpnusername": {
+      "defaultValue": "student",
+      "type": "String"
+    },
+    "openvpnuserpassword": {
+      "defaultValue": "Student00000",
+      "type": "String"
+    },
+    "kaliinternalip": {
+      "defaultValue": "10.1.0.5",
+      "type": "String"
+    },
+    "kaliusername": {
+      "defaultValue": "student",
+      "type": "String"
+    },
+    "kalipassword": {
+      "defaultValue": "Student12345",
+      "type": "String"
     }
   },
   "variables": {},
   "resources": [
-    
+
     {
       "type": "Microsoft.Network/networkSecurityGroups",
       "apiVersion": "2020-04-01",
@@ -160,7 +180,7 @@
           },
           "secrets": [],
           "allowExtensionOperations": true
-          
+
         },
         "networkProfile": {
           "networkInterfaces": [
@@ -253,7 +273,7 @@
             "name": "ipconfigOVPN",
             "properties": {
               "privateIPAddress": "10.1.0.4",
-              "privateIPAllocationMethod": "Dynamic",
+              "privateIPAllocationMethod": "Static",
               "publicIPAddress": {
                 "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_OVPNPublicIP_name'))]"
               },
@@ -290,7 +310,7 @@
             "name": "ipconfigKALI",
             "properties": {
               "privateIPAddress": "10.1.0.5",
-              "privateIPAllocationMethod": "Dynamic",
+              "privateIPAllocationMethod": "Static",
               "subnet": {
                 "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_labvn_name'), 'labsubnet')]"
               },
@@ -369,5 +389,31 @@
         "[concat('Microsoft.Compute/virtualMachines/', parameters('virtualMachines_KALI_name'))]"
       ]
     }
-  ]
+  ],
+  "outputs": {
+    "openvpnusername": {
+      "type": "string",
+      "value": "[parameters('openvpnusername')]"
+    },
+    "openvpnuserpassword": {
+      "type": "string",
+      "value": "[parameters('openvpnuserpassword')]"
+    },
+    "openvpnpublicIPAddresses": {
+      "type": "string",
+      "value": "[parameters('publicIPAddresses_OVPNPublicIP_name')]"
+    },
+    "kaliinternalip": {
+      "type": "string",
+      "value": "[parameters('kaliinternalip')]"
+    },
+    "kaliusername": {
+      "type": "string",
+      "value": "[parameters('kaliusername')]"
+    },
+    "kalipassword": {
+      "type": "string",
+      "value": "[parameters('kalipassword')]"
+    }
+  }
 }
