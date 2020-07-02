@@ -110,8 +110,7 @@
       "name": "[parameters('networkInterfaces_OVPNVMNic_name')]",
       "location": "germanywestcentral",
       "dependsOn": [
-        "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_OVPNPublicIP_name'))]",
-       
+        "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_OVPNPublicIP_name'))]"
       ],
       "properties": {
         "ipConfigurations": [
