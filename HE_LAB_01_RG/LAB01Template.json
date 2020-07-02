@@ -372,7 +372,7 @@
             "name": "ipconfigDNSServer",
             "properties": {
               "privateIPAddress": "10.1.0.65",
-              "privateIPAllocationMethod": "Dynamic",
+              "privateIPAllocationMethod": "Static",
               "subnet": {
                 "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_labvn_name'), 'labsubnet')]"
               },
@@ -443,7 +443,7 @@
           },
           "fileUris": {
             "value": [
-              "https://hemainstorage.blob.core.windows.net/scripts/ovpn_change_ip.sh?sp=r&se=2020-07-01T17:40:17Z&sv=2019-10-10&sr=b&sig=wserzV70wpaYTuNKHM4G3fYf0GM3X1%2FRQAQ0uRteMJI%3D"
+              "https://raw.githubusercontent.com/HackersEYE-CA/CyberAcademy/master/scripts/ovpn_change_ip.sh"
             ]
           },
           "commandToExecute": {
@@ -473,7 +473,7 @@
           },
           "fileUris": {
             "value": [
-              "https://hemainstorage.blob.core.windows.net/scripts/vnc_start.sh?sp=r&se=2020-07-01T21:20:07Z&sv=2019-10-10&sr=b&sig=JadVTJb5n6svkj%2FSKYKc1hD0t9h3XCegO4vwKCoZh%2FU%3D"
+              "https://raw.githubusercontent.com/HackersEYE-CA/CyberAcademy/master/scripts/vnc_start.sh"
             ]
           },
           "commandToExecute": {
