@@ -335,7 +335,7 @@
             "name": "ipconfigOVPN",
             "properties": {
               "privateIPAddress": "10.1.0.4",
-              "privateIPAllocationMethod": "Dynamic",
+              "privateIPAllocationMethod": "Static",
               "publicIPAddress": {
                 "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_OVPNPublicIP_name'))]"
               },
@@ -406,7 +406,7 @@
             "name": "ipconfigKALI",
             "properties": {
               "privateIPAddress": "10.1.0.5",
-              "privateIPAllocationMethod": "Dynamic",
+              "privateIPAllocationMethod": "Static",
               "subnet": {
                 "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_labvn_name'), 'labsubnet')]"
               },
