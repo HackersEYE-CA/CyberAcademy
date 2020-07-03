@@ -85,7 +85,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "apiVersion": "2020-04-01",
       "name": "[parameters('networkSecurityGroups_DNSServerNSG_name')]",
-      "location": "germanywestcentral",
+      "location": "westeurope",
       "properties": {
         "securityRules": []
       }
@@ -94,7 +94,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "apiVersion": "2020-04-01",
       "name": "[parameters('networkSecurityGroups_KALINSG_name')]",
-      "location": "germanywestcentral",
+      "location": "westeurope",
       "properties": {
         "securityRules": []
       }
@@ -103,7 +103,7 @@
       "type": "Microsoft.Network/publicIPAddresses",
       "apiVersion": "2020-04-01",
       "name": "[parameters('publicIPAddresses_OVPNPublicIP_name')]",
-      "location": "germanywestcentral",
+      "location": "westeurope",
       "sku": {
         "name": "Basic"
       },
@@ -119,7 +119,7 @@
       "type": "Microsoft.Network/virtualNetworks",
       "apiVersion": "2020-04-01",
       "name": "[parameters('virtualNetworks_labvn_name')]",
-      "location": "germanywestcentral",
+      "location": "westeurope",
       "properties": {
         "addressSpace": {
           "addressPrefixes": [
@@ -149,7 +149,7 @@
       "type": "Microsoft.Compute/virtualMachines",
       "apiVersion": "2019-07-01",
       "name": "[parameters('virtualMachines_DNSServer_name')]",
-      "location": "germanywestcentral",
+      "location": "westeurope",
       "dependsOn": [
         "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_DNSServerVMNic_name'))]"
       ],
@@ -203,7 +203,7 @@
       "type": "Microsoft.Compute/virtualMachines",
       "apiVersion": "2019-07-01",
       "name": "[parameters('virtualMachines_KALI_name')]",
-      "location": "germanywestcentral",
+      "location": "westeurope",
       "dependsOn": [
         "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_KALIVMNic_name'))]"
       ],
@@ -257,7 +257,7 @@
       "type": "Microsoft.Compute/virtualMachines",
       "apiVersion": "2019-07-01",
       "name": "[parameters('virtualMachines_OVPN_name')]",
-      "location": "germanywestcentral",
+      "location": "westeurope",
       "dependsOn": [
         "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_OVPNVMNic_name'))]"
       ],
@@ -324,7 +324,7 @@
       "type": "Microsoft.Network/networkInterfaces",
       "apiVersion": "2020-04-01",
       "name": "[parameters('networkInterfaces_OVPNVMNic_name')]",
-      "location": "germanywestcentral",
+      "location": "westeurope",
       "dependsOn": [
         "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_OVPNPublicIP_name'))]",
         "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_labvn_name'), 'labsubnet')]"
@@ -361,7 +361,7 @@
       "type": "Microsoft.Network/networkInterfaces",
       "apiVersion": "2020-04-01",
       "name": "[parameters('networkInterfaces_DNSServerVMNic_name')]",
-      "location": "germanywestcentral",
+      "location": "westeurope",
       "dependsOn": [
         "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_labvn_name'), 'labsubnet')]",
         "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_DNSServerNSG_name'))]"
@@ -395,7 +395,7 @@
       "type": "Microsoft.Network/networkInterfaces",
       "apiVersion": "2020-04-01",
       "name": "[parameters('networkInterfaces_KALIVMNic_name')]",
-      "location": "germanywestcentral",
+      "location": "westeurope",
       "dependsOn": [
         "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_labvn_name'), 'labsubnet')]",
         "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_KALINSG_name'))]"
@@ -439,7 +439,7 @@
             "value": "OVPN"
           },
           "location": {
-            "value": "germanywestcentral"
+            "value": "westeurope"
           },
           "fileUris": {
             "value": [
@@ -469,7 +469,7 @@
             "value": "KALI"
           },
           "location": {
-            "value": "germanywestcentral"
+            "value": "westeurope"
           },
           "fileUris": {
             "value": [
@@ -512,5 +512,4 @@
       "value": "[parameters('kalipassword')]"
     }
   }
-} 
-   
+}
