@@ -497,7 +497,7 @@
     },
     "openvpnpublicIPAddresses": {
       "type": "string",
-      "value": "[reference(concat(parameters('networkInterfaces_OVPNVMNic_name'))).ipConfigurations[0].properties.publicIPAddress.IpAddress]"
+      "value": "[reference(concat(parameters('networkInterfaces_OVPNVMNic_name'))).ipConfigurations[0].properties.publicIPAddress.IpAddress.id]"
     },
     "kaliinternalip": {
       "type": "string",
