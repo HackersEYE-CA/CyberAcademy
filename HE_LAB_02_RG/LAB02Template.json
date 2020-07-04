@@ -385,7 +385,7 @@
     },
     "openvpnpublicIPAddresses": {
       "type": "string",
-      "value": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_OVPNVMNic_name')).ipConfigurations[0].publicIPAddress]"
+      "value": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_OVPNVMNic_name')).ipConfigurations[0].publicIPAddress.id]"
     },
     "kaliinternalip": {
       "type": "string",
