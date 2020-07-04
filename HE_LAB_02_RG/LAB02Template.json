@@ -14,10 +14,6 @@
       "defaultValue": "labvn",
       "type": "String"
     },
-    "virtualMachines_DNSServer_name": {
-      "defaultValue": "DNSServer",
-      "type": "String"
-    },
     "networkInterfaces_KALIVMNic_name": {
       "defaultValue": "KALIVMNic",
       "type": "String"
@@ -32,18 +28,6 @@
     },
     "publicIPAddresses_OVPNPublicIP_name": {
       "defaultValue": "OVPNPublicIP",
-      "type": "String"
-    },
-    "networkInterfaces_DNSServerVMNic_name": {
-      "defaultValue": "DNSServerVMNic",
-      "type": "String"
-    },
-    "networkSecurityGroups_DNSServerNSG_name": {
-      "defaultValue": "DNSServerNSG",
-      "type": "String"
-    },
-    "images_DNSServer_image_externalid": {
-      "defaultValue": "/subscriptions/dfc56fc5-6696-4c3c-ac3c-fce7c1c4fe46/resourceGroups/HE_IMAGES_RG/providers/Microsoft.Compute/images/DNSServer-image",
       "type": "String"
     },
     "images_KALI_image_externalid": {
@@ -100,7 +84,7 @@
         "name": "Basic"
       },
       "properties": {
-        "ipAddress": "51.116.185.80",
+        "ipAddress": "",
         "publicIPAddressVersion": "IPv4",
         "publicIPAllocationMethod": "Dynamic",
         "idleTimeoutInMinutes": 4,
@@ -401,7 +385,7 @@
     },
     "openvpnpublicIPAddresses": {
       "type": "string",
-      "value": "[parameters('publicIPAddresses_OVPNPublicIP_name')]"
+      "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPAddresses_OVPNPublicIP_name'))).ipAddress]"
     },
     "kaliinternalip": {
       "type": "string",
@@ -416,4 +400,4 @@
       "value": "[parameters('kalipassword')]"
     }
   }
-}
+} 
