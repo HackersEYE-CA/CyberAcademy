@@ -67,15 +67,6 @@
   "resources": [
 
     {
-      "type": "Microsoft.Network/networkSecurityGroups",
-      "apiVersion": "2020-04-01",
-      "name": "[parameters('networkSecurityGroups_KALINSG_name')]",
-      "location": "germanywestcentral",
-      "properties": {
-        "securityRules": []
-      }
-    },
-    {
       "type": "Microsoft.Network/publicIPAddresses",
       "apiVersion": "2020-04-01",
       "name": "[parameters('publicIPAddresses_OVPNPublicIP_name')]",
@@ -121,60 +112,7 @@
         "enableVmProtection": false
       }
     },
-    {
-      "type": "Microsoft.Compute/virtualMachines",
-      "apiVersion": "2019-07-01",
-      "name": "[parameters('virtualMachines_KALI_name')]",
-      "location": "germanywestcentral",
-      "dependsOn": [
-        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_KALIVMNic_name'))]"
-      ],
-      "plan": {
-        "name": "kali",
-        "product": "kali-linux",
-        "publisher": "kali-linux"
-      },
-      "properties": {
-        "hardwareProfile": {
-          "vmSize": "Standard_DS1_v2"
-        },
-        "storageProfile": {
-          "imageReference": {
-            "id": "[parameters('images_KALI_image_externalid')]"
-          },
-          "osDisk": {
-            "osType": "Linux",
-            "name": "[concat(parameters('virtualMachines_KALI_name'), '_disk1_24ce2dea4b46475b84dc7ec3da954e27')]",
-            "createOption": "FromImage",
-            "caching": "ReadWrite",
-            "managedDisk": {
-              "storageAccountType": "StandardSSD_LRS"
-            },
-            "diskSizeGB": 30
-          },
-          "dataDisks": []
-        },
-        "osProfile": {
-          "computerName": "[parameters('virtualMachines_KALI_name')]",
-          "adminUsername": "student",
-          "adminPassword": "Student12345",
-          "linuxConfiguration": {
-            "disablePasswordAuthentication": false,
-            "provisionVMAgent": true
-          },
-          "secrets": [],
-          "allowExtensionOperations": true
-
-        },
-        "networkProfile": {
-          "networkInterfaces": [
-            {
-              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_KALIVMNic_name'))]"
-            }
-          ]
-        }
-      }
-    },
+   
     {
       "type": "Microsoft.Compute/virtualMachines",
       "apiVersion": "2019-07-01",
@@ -279,40 +217,7 @@
         }
       }
     },
-    {
-      "type": "Microsoft.Network/networkInterfaces",
-      "apiVersion": "2020-04-01",
-      "name": "[parameters('networkInterfaces_KALIVMNic_name')]",
-      "location": "germanywestcentral",
-      "dependsOn": [
-        "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_labvn_name'), 'labsubnet')]",
-        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_KALINSG_name'))]"
-      ],
-      "properties": {
-        "ipConfigurations": [
-          {
-            "name": "ipconfigKALI",
-            "properties": {
-              "privateIPAddress": "10.1.0.5",
-              "privateIPAllocationMethod": "Static",
-              "subnet": {
-                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_labvn_name'), 'labsubnet')]"
-              },
-              "primary": true,
-              "privateIPAddressVersion": "IPv4"
-            }
-          }
-        ],
-        "dnsSettings": {
-          "dnsServers": []
-        },
-        "enableAcceleratedNetworking": false,
-        "enableIPForwarding": false,
-        "networkSecurityGroup": {
-          "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_KALINSG_name'))]"
-        }
-      }
-    },
+    
     {
       "name": "microsoft.custom-script-linux-20200701124045",
       "apiVersion": "2015-01-01",
@@ -342,62 +247,15 @@
       "dependsOn": [
         "[concat('Microsoft.Compute/virtualMachines/', parameters('virtualMachines_OVPN_name'))]"
       ]
-    },
-    {
-      "name": "microsoft.custom-script-linux-20200701162020",
-      "apiVersion": "2015-01-01",
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-        "mode": "incremental",
-        "templateLink": {
-          "uri": "https://gallery.azure.com/artifact/20161101/microsoft.custom-script-linux-arm.2.0.56/Artifacts/MainTemplate.json"
-        },
-        "parameters": {
-          "vmName": {
-            "value": "KALI"
-          },
-          "location": {
-            "value": "germanywestcentral"
-          },
-          "fileUris": {
-            "value": [
-              "https://hemainstorage.blob.core.windows.net/scripts/vnc_start.sh"
-            ]
-          },
-          "commandToExecute": {
-            "value": "sh vnc_start.sh"
-          }
-        }
-      },
-      "dependsOn": [
-        "[concat('Microsoft.Compute/virtualMachines/', parameters('virtualMachines_KALI_name'))]"
-      ]
     }
+    
   ],
   "outputs": {
-    "openvpnusername": {
-      "type": "string",
-      "value": "[parameters('openvpnusername')]"
-    },
-    "openvpnuserpassword": {
-      "type": "string",
-      "value": "[parameters('openvpnuserpassword')]"
-    },
+   
     "openvpnpublicIPAddresses": {
       "type": "string",
       "value": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_OVPNPublicIP_name'))]"
-    },
-    "kaliinternalip": {
-      "type": "string",
-      "value": "[parameters('kaliinternalip')]"
-    },
-    "kaliusername": {
-      "type": "string",
-      "value": "[parameters('kaliusername')]"
-    },
-    "kalipassword": {
-      "type": "string",
-      "value": "[parameters('kalipassword')]"
     }
+    
   }
 } 
