@@ -4,67 +4,67 @@
   "parameters": {
     "virtualMachines_KALI_name": {
       "defaultValue": "KALI",
-      "type": "String"
+      "type": "string"
     },
     "virtualMachines_OVPN_name": {
       "defaultValue": "OVPN",
-      "type": "String"
+      "type": "string"
     },
     "virtualNetworks_labvn_name": {
       "defaultValue": "labvn",
-      "type": "String"
+      "type": "string"
     },
     "networkInterfaces_KALIVMNic_name": {
       "defaultValue": "KALIVMNic",
-      "type": "String"
+      "type": "string"
     },
     "networkInterfaces_OVPNVMNic_name": {
       "defaultValue": "OVPNVMNic",
-      "type": "String"
+      "type": "string"
     },
     "networkSecurityGroups_KALINSG_name": {
       "defaultValue": "KALINSG",
-      "type": "String"
+      "type": "string"
     },
     "publicIPAddresses_OVPNPublicIP_name": {
       "defaultValue": "OVPNPublicIP",
-      "type": "String"
+      "type": "string"
     },
     "images_KALI_image_externalid": {
       "defaultValue": "/subscriptions/dfc56fc5-6696-4c3c-ac3c-fce7c1c4fe46/resourceGroups/HE_IMAGES_RG/providers/Microsoft.Compute/images/KALI-image",
-      "type": "String"
+      "type": "string"
     },
     "images_OVPN22_image_externalid": {
       "defaultValue": "/subscriptions/dfc56fc5-6696-4c3c-ac3c-fce7c1c4fe46/resourceGroups/HE_IMAGES_RG/providers/Microsoft.Compute/images/OVPN22-image",
-      "type": "String"
+      "type": "string"
     },
     "networkSecurityGroups_OpenVPNNetworkSecurityGroup_externalid": {
       "defaultValue": "/subscriptions/dfc56fc5-6696-4c3c-ac3c-fce7c1c4fe46/resourceGroups/HE_IMAGES_RG/providers/Microsoft.Network/networkSecurityGroups/OpenVPNNetworkSecurityGroup",
-      "type": "String"
+      "type": "string"
     },
     "openvpnusername": {
       "defaultValue": "student",
-      "type": "String"
+      "type": "string"
     },
     "openvpnuserpassword": {
       "defaultValue": "Student00000",
-      "type": "String"
+      "type": "string"
     },
     "kaliinternalip": {
       "defaultValue": "10.1.0.5",
-      "type": "String"
+      "type":"string"
     },
     "kaliusername": {
       "defaultValue": "student",
-      "type": "String"
+      "type":"string"
     },
     "kalipassword": {
       "defaultValue": "Student12345",
-      "type": "String"
+      "type":"string"
     },
     "location": {
       "defaultValue": "germanywestcentral",
-      "type": "String"
+      "type":"string"
     }
   },
   "variables": {},
