@@ -180,6 +180,7 @@
         "osProfile": {
           "computerName": "[parameters('virtualMachines_secrethome_name')]",
           "adminUsername": "headmin",
+          "adminPassword": "!bQC?y%QbQGI",
           "windowsConfiguration": {
             "provisionVMAgent": true,
             "enableAutomaticUpdates": true
