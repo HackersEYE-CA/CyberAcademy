@@ -42,6 +42,22 @@
       "defaultValue": "/subscriptions/dfc56fc5-6696-4c3c-ac3c-fce7c1c4fe46/resourceGroups/HE_IMAGES_RG/providers/Microsoft.Network/networkSecurityGroups/OpenVPNNetworkSecurityGroup",
       "type": "string"
     },
+    "virtualMachines_secrethome_name": {
+      "defaultValue": "secrethome",
+      "type": "String"
+    },
+    "networkInterfaces_secrethome25_name": {
+      "defaultValue": "secrethome25",
+      "type": "String"
+    },
+    "networkSecurityGroups_secrethome_nsg_name": {
+      "defaultValue": "secrethome-nsg",
+      "type": "String"
+    },
+    "images_webapp01_image_20200705185826_externalid": {
+      "defaultValue": "/subscriptions/dfc56fc5-6696-4c3c-ac3c-fce7c1c4fe46/resourceGroups/HE_IMAGES_RG/providers/Microsoft.Compute/images/webapp01-image-20200705185826",
+      "type": "String"
+    },
     "openvpnusername": {
       "defaultValue": "student",
       "type": "string"
@@ -52,24 +68,32 @@
     },
     "kaliinternalip": {
       "defaultValue": "10.1.0.5",
-      "type":"string"
+      "type": "string"
     },
     "kaliusername": {
       "defaultValue": "student",
-      "type":"string"
+      "type": "string"
     },
     "kalipassword": {
       "defaultValue": "Student12345",
-      "type":"string"
+      "type": "string"
     },
     "location": {
       "defaultValue": "germanywestcentral",
-      "type":"string"
+      "type": "string"
     }
   },
   "variables": {},
   "resources": [
-
+    {
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "apiVersion": "2020-04-01",
+      "name": "[parameters('networkSecurityGroups_secrethome_nsg_name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "securityRules": []
+      }
+    },
     {
       "type": "Microsoft.Network/networkSecurityGroups",
       "apiVersion": "2020-04-01",
@@ -125,6 +149,55 @@
         "enableVmProtection": false
       }
     },
+    {
+      "type": "Microsoft.Compute/virtualMachines",
+      "apiVersion": "2019-07-01",
+      "name": "[parameters('virtualMachines_secrethome_name')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_secrethome25_name'))]"
+      ],
+      "properties": {
+        "hardwareProfile": {
+          "vmSize": "Standard_B1s"
+        },
+        "storageProfile": {
+          "imageReference": {
+            "id": "[parameters('images_webapp01_image_20200705185826_externalid')]"
+          },
+          "osDisk": {
+            "osType": "Windows",
+            "name": "[concat(parameters('virtualMachines_secrethome_name'), '_disk1_9413a5f68b5a4a9489c49f0a7583f281')]",
+            "createOption": "FromImage",
+            "caching": "ReadWrite",
+            "managedDisk": {
+              "storageAccountType": "StandardSSD_LRS"
+            },
+            "diskSizeGB": 127
+          },
+          "dataDisks": []
+        },
+        "osProfile": {
+          "computerName": "[parameters('virtualMachines_secrethome_name')]",
+          "adminUsername": "headmin",
+          "windowsConfiguration": {
+            "provisionVMAgent": true,
+            "enableAutomaticUpdates": true
+          },
+          "secrets": [],
+          "allowExtensionOperations": true,
+          "requireGuestProvisionSignal": false
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_secrethome25_name'))]"
+            }
+          ]
+        }
+      }
+    },
+
     {
       "type": "Microsoft.Compute/virtualMachines",
       "apiVersion": "2019-07-01",
@@ -280,6 +353,39 @@
         "enableIPForwarding": false,
         "networkSecurityGroup": {
           "id": "[parameters('networkSecurityGroups_OpenVPNNetworkSecurityGroup_externalid')]"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Network/networkInterfaces",
+      "apiVersion": "2020-04-01",
+      "name": "[parameters('networkInterfaces_secrethome25_name')]",
+      "location": "germanywestcentral",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_secrethome_nsg_name'))]"
+      ],
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAddress": "10.1.0.184",
+              "privateIPAllocationMethod": "Static",
+              "subnet": {
+                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_labvn_name'), 'labsubnet')]"
+              },
+              "primary": true,
+              "privateIPAddressVersion": "IPv4"
+            }
+          }
+        ],
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableAcceleratedNetworking": false,
+        "enableIPForwarding": false,
+        "networkSecurityGroup": {
+          "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_secrethome_nsg_name'))]"
         }
       }
     },
