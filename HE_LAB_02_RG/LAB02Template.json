@@ -46,16 +46,16 @@
       "defaultValue": "secrethome",
       "type": "String"
     },
-    "networkInterfaces_secrethome25_name": {
-      "defaultValue": "secrethome25",
+    "networkInterfaces_secrethome676_name": {
+      "defaultValue": "secrethome676",
       "type": "String"
     },
     "networkSecurityGroups_secrethome_nsg_name": {
       "defaultValue": "secrethome-nsg",
       "type": "String"
     },
-    "images_webapp01_image_20200705185826_externalid": {
-      "defaultValue": "/subscriptions/dfc56fc5-6696-4c3c-ac3c-fce7c1c4fe46/resourceGroups/HE_IMAGES_RG/providers/Microsoft.Compute/images/webapp01-image-20200705185826",
+    "images_secrethomeWebApp_image_20200705211811_externalid": {
+      "defaultValue": "/subscriptions/dfc56fc5-6696-4c3c-ac3c-fce7c1c4fe46/resourceGroups/HE_IMAGES_RG/providers/Microsoft.Compute/images/secrethomeWebApp-image-20200705211811",
       "type": "String"
     },
     "openvpnusername": {
@@ -155,7 +155,7 @@
       "name": "[parameters('virtualMachines_secrethome_name')]",
       "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_secrethome25_name'))]"
+        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_secrethome676_name'))]"
       ],
       "properties": {
         "hardwareProfile": {
@@ -163,15 +163,15 @@
         },
         "storageProfile": {
           "imageReference": {
-            "id": "[parameters('images_webapp01_image_20200705185826_externalid')]"
+            "id": "[parameters('images_secrethomeWebApp_image_20200705211811_externalid')]"
           },
           "osDisk": {
             "osType": "Windows",
-            "name": "[concat(parameters('virtualMachines_secrethome_name'), '_disk1_9413a5f68b5a4a9489c49f0a7583f281')]",
+            "name": "[concat(parameters('virtualMachines_secrethome_name'), '_disk1_bfbefbe2546c4525b8132f45cff5d396')]",
             "createOption": "FromImage",
             "caching": "ReadWrite",
             "managedDisk": {
-              "storageAccountType": "StandardSSD_LRS"
+              "storageAccountType": "Premium_LRS",
             },
             "diskSizeGB": 127
           },
@@ -191,7 +191,7 @@
         "networkProfile": {
           "networkInterfaces": [
             {
-              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_secrethome25_name'))]"
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_secrethome676_name'))]"
             }
           ]
         }
@@ -359,7 +359,7 @@
     {
       "type": "Microsoft.Network/networkInterfaces",
       "apiVersion": "2020-04-01",
-      "name": "[parameters('networkInterfaces_secrethome25_name')]",
+      "name": "[parameters('networkInterfaces_secrethome676_name')]",
       "location": "germanywestcentral",
       "dependsOn": [
         "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_secrethome_nsg_name'))]"
