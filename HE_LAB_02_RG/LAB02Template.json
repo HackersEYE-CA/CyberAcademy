@@ -254,7 +254,7 @@
 
     "openvpnpublicIPAddresses": {
       "type": "string",
-      //"value": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_OVPNPublicIP_name'))]",
+      
       "value": "[reference(variables('OVPNPublicIP')).IpAddress]"
     }
     
