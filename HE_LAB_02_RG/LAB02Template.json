@@ -163,11 +163,11 @@
         },
         "storageProfile": {
           "imageReference": {
-            "id": "[parameters('images_secrethomeWebApp_image_20200705211811_externalid')]"
+            "id": "[parameters('images_Secrethome_WebApp_last_image_externalid')]"
           },
           "osDisk": {
             "osType": "Windows",
-            "name": "[concat(parameters('virtualMachines_secrethome_name'), '_disk1_bfbefbe2546c4525b8132f45cff5d396')]",
+            "name": "[concat(parameters('virtualMachines_secrethome_name'), '_disk1_5bba0d32f7cf4b229801a54193a88abd')]",
             "createOption": "FromImage",
             "caching": "ReadWrite",
             "managedDisk": {
