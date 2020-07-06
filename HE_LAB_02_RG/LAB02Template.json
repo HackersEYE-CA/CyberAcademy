@@ -46,16 +46,16 @@
       "defaultValue": "secrethome",
       "type": "String"
     },
-    "networkInterfaces_secrethome676_name": {
-      "defaultValue": "secrethome676",
+    "networkInterfaces_secrethome197_name": {
+      "defaultValue": "secrethome197",
       "type": "String"
     },
     "networkSecurityGroups_secrethome_nsg_name": {
       "defaultValue": "secrethome-nsg",
       "type": "String"
     },
-    "images_secrethomeWebApp_image_20200705211811_externalid": {
-      "defaultValue": "/subscriptions/dfc56fc5-6696-4c3c-ac3c-fce7c1c4fe46/resourceGroups/HE_IMAGES_RG/providers/Microsoft.Compute/images/secrethomeWebApp-image-20200705211811",
+    "images_Secrethome_WebApp_last_image_externalid": {
+      "defaultValue": "/subscriptions/dfc56fc5-6696-4c3c-ac3c-fce7c1c4fe46/resourceGroups/HE_IMAGES_RG/providers/Microsoft.Compute/images/Secrethome_WebApp_last-image",
       "type": "String"
     },
     "openvpnusername": {
@@ -159,7 +159,7 @@
       ],
       "properties": {
         "hardwareProfile": {
-          "vmSize": "Standard_B2s"
+          "vmSize": "Standard_B1ms"
         },
         "storageProfile": {
           "imageReference": {
@@ -171,7 +171,7 @@
             "createOption": "FromImage",
             "caching": "ReadWrite",
             "managedDisk": {
-              "storageAccountType": "Premium_LRS"
+              "storageAccountType": "StandardSSD_LRS"
             },
             "diskSizeGB": 127
           },
@@ -191,13 +191,12 @@
         "networkProfile": {
           "networkInterfaces": [
             {
-              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_secrethome676_name'))]"
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_secrethome197_name'))]"
             }
           ]
         }
       }
     },
-
     {
       "type": "Microsoft.Compute/virtualMachines",
       "apiVersion": "2019-07-01",
@@ -360,9 +359,9 @@
       "type": "Microsoft.Network/networkInterfaces",
       "apiVersion": "2020-04-01",
       "name": "[parameters('networkInterfaces_secrethome676_name')]",
-      "location": "germanywestcentral",
+      "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_secrethome_nsg_name'))]"
+        "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_labvn_name'), 'labsubnet')]"
       ],
       "properties": {
         "ipConfigurations": [
@@ -495,7 +494,7 @@
     },
     "openvpnpublicIPAddresses": {
       "type": "string",
-      "value": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_OVPNPublicIP_name'))]"
+      "value": "[parameters('publicIPAddresses_OVPNPublicIP_name').ipAddress]"
     },
     "kaliinternalip": {
       "type": "string",
