@@ -112,9 +112,9 @@
         "name": "Basic"
       },
       "properties": {
-        "ipAddress": "",
+        
         "publicIPAddressVersion": "IPv4",
-        "publicIPAllocationMethod": "Dynamic",
+        "publicIPAllocationMethod": "Static",
         "idleTimeoutInMinutes": 4,
         "ipTags": []
       }
