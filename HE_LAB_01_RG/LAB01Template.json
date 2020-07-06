@@ -108,9 +108,8 @@
         "name": "Basic"
       },
       "properties": {
-        "ipAddress": "51.116.185.80",
         "publicIPAddressVersion": "IPv4",
-        "publicIPAllocationMethod": "Dynamic",
+        "publicIPAllocationMethod": "Static",
         "idleTimeoutInMinutes": 4,
         "ipTags": []
       }
@@ -497,7 +496,7 @@
     },
     "openvpnpublicIPAddresses": {
       "type": "string",
-      "value": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_OVPNPublicIP_name'))]"
+      "value": "[reference(parameters('publicIPAddresses_OVPNPublicIP_name')).ipAddress]"
     },
     "kaliinternalip": {
       "type": "string",
