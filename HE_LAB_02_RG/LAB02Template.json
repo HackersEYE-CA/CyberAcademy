@@ -492,9 +492,9 @@
       "type": "string",
       "value": "[parameters('openvpnuserpassword')]"
     },
-    "openvpnpublicIPAddresses": {
+    "openvpnIPAddresses": {
       "type": "string",
-      "value": "[parameters('publicIPAddresses_OVPNPublicIP_name').ipAddress]"
+      "value": "[reference(parameters('publicIPAddresses_OVPNPublicIP_name')).ipAddress]"
     },
     "kaliinternalip": {
       "type": "string",
