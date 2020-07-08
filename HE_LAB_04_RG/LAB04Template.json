@@ -14,8 +14,8 @@
       "defaultValue": "labvn",
       "type": "string"
     },
-    "virtualMachines_Win2003R232_name": {
-      "defaultValue": "Win2003R232",
+    "virtualMachines_Windows2k3R232_name": {
+      "defaultValue": "Windows2k3R232",
       "type": "String"
     },
     "networkInterfaces_KALIVMNic_name": {
@@ -26,8 +26,8 @@
       "defaultValue": "OVPNVMNic",
       "type": "string"
     },
-    "networkInterfaces_win2003r232760_name": {
-      "defaultValue": "win2003r232760",
+    "networkInterfaces_windows2k3r232490_name": {
+      "defaultValue": "windows2k3r232490",
       "type": "String"
     },
     "networkSecurityGroups_KALINSG_name": {
@@ -46,16 +46,16 @@
       "defaultValue": "/subscriptions/dfc56fc5-6696-4c3c-ac3c-fce7c1c4fe46/resourceGroups/HE_IMAGES_RG/providers/Microsoft.Compute/images/OVPN22-image",
       "type": "string"
     },
+    "images_Win2003R232_image_last_externalid": {
+      "defaultValue": "/subscriptions/dfc56fc5-6696-4c3c-ac3c-fce7c1c4fe46/resourceGroups/HE_IMAGES_RG/providers/Microsoft.Compute/images/Win2003R232-image-last",
+      "type": "String"
+    },
     "networkSecurityGroups_OpenVPNNetworkSecurityGroup_externalid": {
       "defaultValue": "/subscriptions/dfc56fc5-6696-4c3c-ac3c-fce7c1c4fe46/resourceGroups/HE_IMAGES_RG/providers/Microsoft.Network/networkSecurityGroups/OpenVPNNetworkSecurityGroup",
       "type": "string"
     },
     "images_Secrethome_WebApp_last_image_externalid": {
       "defaultValue": "/subscriptions/dfc56fc5-6696-4c3c-ac3c-fce7c1c4fe46/resourceGroups/HE_IMAGES_RG/providers/Microsoft.Compute/images/Secrethome_WebApp_last-image",
-      "type": "String"
-    },
-    "disks_windows_2003_r2_32_externalid": {
-      "defaultValue": "/subscriptions/dfc56fc5-6696-4c3c-ac3c-fce7c1c4fe46/resourceGroups/HE_IMAGES_RG/providers/Microsoft.Compute/disks/windows_2003_r2_32",
       "type": "String"
     },
     "openvpnusername": {
@@ -250,10 +250,10 @@
     {
       "type": "Microsoft.Compute/virtualMachines",
       "apiVersion": "2019-07-01",
-      "name": "[parameters('virtualMachines_Win2003R232_name')]",
+      "name": "[parameters('virtualMachines_Windows2k3R232_name')]",
       "location": "germanywestcentral",
       "dependsOn": [
-        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_win2003r232760_name'))]"
+        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_windows2k3r232490_name'))]"
       ],
       "properties": {
         "hardwareProfile": {
@@ -262,20 +262,30 @@
         "storageProfile": {
           "osDisk": {
             "osType": "Windows",
-            "createOption": "Attach",
+            "name": "[concat(parameters('virtualMachines_Windows2k3R232_name'), '_disk1_aa99f9a099614e32a4cdbfe05bbe1f80')]",
+            "createOption": "FromImage",
             "caching": "ReadWrite",
             "managedDisk": {
-              "storageAccountType": "StandardSSD_LRS",
-              "id": "[parameters('disks_windows_2003_r2_32_externalid')]"
+              "storageAccountType": "StandardSSD_LRS"
             },
             "diskSizeGB": 8
           },
           "dataDisks": []
         },
+        "osProfile": {
+          "computerName": "[parameters('virtualMachines_Windows2k3R232_name')]",
+          "adminUsername": "headmin",
+          "adminPassword": "!bQC?y%QbQGI",
+          "windowsConfiguration": {
+            "provisionVMAgent": true,
+            "enableAutomaticUpdates": true
+          },
+          "secrets": []
+        },
         "networkProfile": {
           "networkInterfaces": [
             {
-              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_win2003r232760_name'))]"
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_windows2k3r232490_name'))]"
             }
           ]
         }
@@ -369,7 +379,7 @@
     {
       "type": "Microsoft.Network/networkInterfaces",
       "apiVersion": "2020-04-01",
-      "name": "[parameters('networkInterfaces_win2003r232760_name')]",
+      "name": "[parameters('networkInterfaces_windows2k3r232490_name')]",
       "location": "germanywestcentral",
       "dependsOn": [
         "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_labvn_name'), 'labsubnet')]"
