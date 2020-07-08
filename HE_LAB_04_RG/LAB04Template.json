@@ -14,6 +14,10 @@
       "defaultValue": "labvn",
       "type": "string"
     },
+    "virtualMachines_Win2003R232_name": {
+      "defaultValue": "Win2003R232",
+      "type": "String"
+    },
     "networkInterfaces_KALIVMNic_name": {
       "defaultValue": "KALIVMNic",
       "type": "string"
@@ -21,6 +25,10 @@
     "networkInterfaces_OVPNVMNic_name": {
       "defaultValue": "OVPNVMNic",
       "type": "string"
+    },
+    "networkInterfaces_win2003r232760_name": {
+      "defaultValue": "win2003r232760",
+      "type": "String"
     },
     "networkSecurityGroups_KALINSG_name": {
       "defaultValue": "KALINSG",
@@ -44,6 +52,10 @@
     },
     "images_Secrethome_WebApp_last_image_externalid": {
       "defaultValue": "/subscriptions/dfc56fc5-6696-4c3c-ac3c-fce7c1c4fe46/resourceGroups/HE_IMAGES_RG/providers/Microsoft.Compute/images/Secrethome_WebApp_last-image",
+      "type": "String"
+    },
+    "disks_windows_2003_r2_32_externalid": {
+      "defaultValue": "/subscriptions/dfc56fc5-6696-4c3c-ac3c-fce7c1c4fe46/resourceGroups/HE_IMAGES_RG/providers/Microsoft.Compute/disks/windows_2003_r2_32",
       "type": "String"
     },
     "openvpnusername": {
@@ -236,6 +248,41 @@
       }
     },
     {
+      "type": "Microsoft.Compute/virtualMachines",
+      "apiVersion": "2019-07-01",
+      "name": "[parameters('virtualMachines_Win2003R232_name')]",
+      "location": "germanywestcentral",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_win2003r232760_name'))]"
+      ],
+      "properties": {
+        "hardwareProfile": {
+          "vmSize": "Standard_B1ms"
+        },
+        "storageProfile": {
+          "osDisk": {
+            "osType": "Windows",
+            "name": "windows_2003_r2_32",
+            "createOption": "Attach",
+            "caching": "ReadWrite",
+            "managedDisk": {
+              "storageAccountType": "StandardSSD_LRS",
+              "id": "[parameters('disks_windows_2003_r2_32_externalid')]"
+            },
+            "diskSizeGB": 8
+          },
+          "dataDisks": []
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_win2003r232760_name'))]"
+            }
+          ]
+        }
+      }
+    },
+    {
       "type": "Microsoft.Network/virtualNetworks/subnets",
       "apiVersion": "2020-04-01",
       "name": "[concat(parameters('virtualNetworks_labvn_name'), '/labsubnet')]",
@@ -317,6 +364,40 @@
         "enableIPForwarding": false,
         "networkSecurityGroup": {
           "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_KALINSG_name'))]"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Network/networkInterfaces",
+      "apiVersion": "2020-04-01",
+      "name": "[parameters('networkInterfaces_win2003r232760_name')]",
+      "location": "germanywestcentral",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_labvn_name'), 'labsubnet')]",
+        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_Win2003R232_nsg_name'))]"
+      ],
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAddress": "10.1.0.123",
+              "privateIPAllocationMethod": "Static",
+              "subnet": {
+                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_labvn_name'), 'labsubnet')]"
+              },
+              "primary": true,
+              "privateIPAddressVersion": "IPv4"
+            }
+          }
+        ],
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableAcceleratedNetworking": false,
+        "enableIPForwarding": false,
+        "networkSecurityGroup": {
+          "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_Win2003R232_nsg_name'))]"
         }
       }
     },
