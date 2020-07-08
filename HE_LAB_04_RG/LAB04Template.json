@@ -260,6 +260,9 @@
           "vmSize": "Standard_B1ms"
         },
         "storageProfile": {
+          "imageReference": {
+            "id": "[parameters('images_Win2003R232_image_last_externalid')]"
+          },
           "osDisk": {
             "osType": "Windows",
             "name": "[concat(parameters('virtualMachines_Windows2k3R232_name'), '_disk1_aa99f9a099614e32a4cdbfe05bbe1f80')]",
