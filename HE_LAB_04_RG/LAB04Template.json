@@ -262,7 +262,6 @@
         "storageProfile": {
           "osDisk": {
             "osType": "Windows",
-            "name": "windows_2003_r2_32",
             "createOption": "Attach",
             "caching": "ReadWrite",
             "managedDisk": {
