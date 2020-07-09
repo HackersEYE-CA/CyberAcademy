@@ -55,7 +55,7 @@
       "type": "String"
     },
     "images_Secrethome_WebApp_last_image_externalid": {
-      "defaultValue": "/subscriptions/dfc56fc5-6696-4c3c-ac3c-fce7c1c4fe46/resourceGroups/HE_IMAGES_RG/providers/Microsoft.Compute/images/Secrethome_WebApp_last-image",
+      "defaultValue": "/subscriptions/dfc56fc5-6696-4c3c-ac3c-fce7c1c4fe46/resourceGroups/HE_IMAGES_RG/providers/Microsoft.Compute/images/secrethome-image-LAST",
       "type": "String"
     },
     "openvpnusername": {
