@@ -54,10 +54,6 @@
       "defaultValue": "/subscriptions/dfc56fc5-6696-4c3c-ac3c-fce7c1c4fe46/resourceGroups/HE_IMAGES_RG/providers/Microsoft.Network/networkSecurityGroups/OpenVPNNetworkSecurityGroup",
       "type": "string"
     },
-    "images_Secrethome_WebApp_last_image_externalid": {
-      "defaultValue": "/subscriptions/dfc56fc5-6696-4c3c-ac3c-fce7c1c4fe46/resourceGroups/HE_IMAGES_RG/providers/Microsoft.Compute/images/Secrethome_WebApp_last-image",
-      "type": "String"
-    },
     "openvpnusername": {
       "defaultValue": "student",
       "type": "string"
@@ -283,7 +279,8 @@
             "provisionVMAgent": true,
             "enableAutomaticUpdates": true
           },
-          "secrets": []
+          "secrets": [],
+          "allowExtensionOperations": true
         },
         "networkProfile": {
           "networkInterfaces": [
