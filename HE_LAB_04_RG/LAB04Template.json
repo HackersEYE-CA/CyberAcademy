@@ -280,7 +280,7 @@
             "enableAutomaticUpdates": true
           },
           "secrets": [],
-          "allowExtensionOperations": true
+          "allowExtensionOperations": false
         },
         "networkProfile": {
           "networkInterfaces": [
