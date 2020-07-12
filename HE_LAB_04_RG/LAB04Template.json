@@ -47,7 +47,7 @@
       "type": "string"
     },
     "images_Win2003R232_image_last_externalid": {
-      "defaultValue": "/subscriptions/dfc56fc5-6696-4c3c-ac3c-fce7c1c4fe46/resourceGroups/HE_IMAGES_RG/providers/Microsoft.Compute/images/Win2003R232-image-last",
+      "defaultValue": "/subscriptions/dfc56fc5-6696-4c3c-ac3c-fce7c1c4fe46/resourceGroups/HE_IMAGES_RG/providers/Microsoft.Compute/images/Windows2k3R232-image-with_sysprep_12-7-20",
       "type": "String"
     },
     "networkSecurityGroups_OpenVPNNetworkSecurityGroup_externalid": {
