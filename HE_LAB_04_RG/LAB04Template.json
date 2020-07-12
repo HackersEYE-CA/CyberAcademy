@@ -276,8 +276,7 @@
           "adminUsername": "headmin",
           "adminPassword": "!bQC?y%QbQGI",
           "windowsConfiguration": {
-            "provisionVMAgent": true,
-            "enableAutomaticUpdates": true
+            
           },
           "secrets": [],
           "allowExtensionOperations": false
