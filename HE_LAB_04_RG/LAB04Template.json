@@ -275,11 +275,8 @@
           "computerName": "[parameters('virtualMachines_Windows2k3R232_name')]",
           "adminUsername": "headmin",
           "adminPassword": "!bQC?y%QbQGI",
-          "windowsConfiguration": {
-            
-          },
-          "secrets": [],
-          "allowExtensionOperations": false
+          "secrets": []
+          
         },
         "networkProfile": {
           "networkInterfaces": [
